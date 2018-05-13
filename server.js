@@ -19,16 +19,16 @@ app.get('/', function (req, res) {
 
     var pid = [];
     var url = [];
+    var undo = 0;
 
     request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
 
-            // Estre la lista di pid
-            for (var i = 0; i < body['page'].length - 1; i++) {
+            // Estae la lista di pid
+            for (var i = 0; i < body['page'].length - 1; i++)
                 pid = pid.concat(body['page'][i]['pid']);
-            }
-            get_pidn(pid);
 
+            get_pidn(pid);
 
         }
 
@@ -39,7 +39,7 @@ app.get('/', function (req, res) {
 
         var pidn = '' + a.length;
 
-        for (var y = 0; y < 10; y++) {
+        for (var y = 0; y < pidn; y++) {
 
             // crea una nuova richiesta
             var options = {
@@ -51,6 +51,7 @@ app.get('/', function (req, res) {
             request(options, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     get_url(body['page'][0]['src'], y);
+
                 }
 
             });
@@ -60,16 +61,23 @@ app.get('/', function (req, res) {
 
 
     function get_url(a, b) {
-        url = url.concat(a);
 
-        if (b == url.length)
-            console.log(url);
+        if (a != undefined)
+            url = url.concat('"' + a + '"');
+        else
+            undo = undo + 1
+
+        print_json(url, b - undo);
+
+    }
+
+    function print_json(c, d) {
+        if (c.length == d)
+            res.send('{ "list": [{ "pages": [' + c + ']}]}');
 
     }
 });
 
 
-
-
 exports = module.exports = app;
-const server = app.listen(process.env.PORT || 3000, function () {});
+const server = app.listen(process.env.PORT || 3000, function () {})
