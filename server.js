@@ -41,19 +41,11 @@ app.post('/', function (req, res) {
             //console.log(body);
 
             // Estae la lista di pid
-<<<<<<< HEAD
             for (var i = 0; i < body['page'].length - 1; i++) 
                 pid = pid.concat(body['page'][i]['pid']);
             
             get_pidn(pid);
 
-=======
-            for (var i = 0; i < body['page'].length - 1; i++)
-                pid = pid.concat(body['page'][i]['pid']);
-
-            get_pidn(pid);
-
->>>>>>> 20b5b26c45f7ca13808f50615a4fa15add1fdb3c
         }
 
     });
@@ -64,11 +56,7 @@ app.post('/', function (req, res) {
         var pidn = '' + a.length;
 
         for (var y = 0; y < pidn; y++) {
-<<<<<<< HEAD
             console.log(id + ' ' + lpg + ' ' + dq + ' ' + pid[y] + ' ' + jscmd + ' ' + dq)
-=======
-
->>>>>>> 20b5b26c45f7ca13808f50615a4fa15add1fdb3c
             // crea una nuova richiesta
             var options2 = {
                 uri: 'https://books.google.it/books?id=' + id + '&lpg=' + lpg + '&dq=' + dq + '&pg=' + pid[y] + '&jscmd=' + jscmd + '&vq=' + dq + '',
@@ -92,7 +80,6 @@ app.post('/', function (req, res) {
     function get_url(a, b) {
 
         if (a != undefined)
-<<<<<<< HEAD
             url = url.concat('"'+a+'"' );
         else
             undo = undo + 1
@@ -104,22 +91,6 @@ app.post('/', function (req, res) {
     function print_json(c, d) {
         if (c.length == d)
             res.send('{ "list": [{ "title" : [ "' + dq + '" ] , "pages": [' + c + '] }]}');
-=======
-            url = url.concat('"' + a + '"');
-        else
-            undo = undo + 1
-
-        print_json(url, b - undo);
-
-    }
-
-    function print_json(c, d) {
-        if (c.length == d)
-            res.send('{ "list": [{ "pages": [' + c + ']}]}');
-
-    }
-});
->>>>>>> 20b5b26c45f7ca13808f50615a4fa15add1fdb3c
 
     }
 });
