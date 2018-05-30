@@ -4,7 +4,7 @@ import sys
 import os
 
 try:
-	r = requests.post(url='https://google-books-test.glitch.me/', data={'link' : sys.argv[1]})
+	r = requests.post(url='https://google-books.glitch.me/', data={'link' : sys.argv[1]})
 	json_data = r.json()
 	# takes links from the JSON
 	lista = json_data['list'][0]['pages']
