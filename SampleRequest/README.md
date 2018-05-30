@@ -1,5 +1,5 @@
 ### Usage
 
 ```
-python3 request.py "https://google-books.glitch.me/"
+python3 request.py "*** google book link ***"
 ```
