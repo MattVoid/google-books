@@ -4,6 +4,9 @@ node_js:
 before_script:
   - npm install express
   - npm install request
+  - npm install body-parser
+  - npm install url
+  - npm install query-string
 script:
-  - node server.js &
+  - node server.js
   - npm test
